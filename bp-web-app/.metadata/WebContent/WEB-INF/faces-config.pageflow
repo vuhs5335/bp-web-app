@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15945137464210" configfile="/bp-web-app/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="946" id="pf15945682825781" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15945682825782 pf15945865463940 pf15945865463941 pf15945865463942 pf15945865463943 pf15945865463944" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/readings.xhtml" x="338" y="178" id="pf15945682825783" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15945682825782" path="/private/readings.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/dashboard.xhtml" x="338" y="562" id="pf15945865463945" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15945865463940" path="/private/dashboard.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="unauthorized.xhtml" x="338" y="946" id="pf15945865463946" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf15945865463941" path="/unauthorized.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/tools.xhtml" x="338" y="1330" id="pf15945865463947" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf15945865463942" path="/private/tools.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/admin/apitool.xhtml" x="338" y="1714" id="pf15945865463948" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf15945865463943" path="/private/admin/apitool.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15945865463949" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15945865463944" path="/login.xhtml"/>
+  <links id="pf15945682825782" target="pf15945682825783" source="pf15945682825781" outcome="readings" redirect="true"/>
+  <links id="pf15945865463940" target="pf15945865463945" source="pf15945682825781" outcome="dashboard" redirect="true"/>
+  <links id="pf15945865463941" target="pf15945865463946" source="pf15945682825781" outcome="unauthorized" redirect="true"/>
+  <links id="pf15945865463942" target="pf15945865463947" source="pf15945682825781" outcome="tools" redirect="true"/>
+  <links id="pf15945865463943" target="pf15945865463948" source="pf15945682825781" outcome="apitool" redirect="true"/>
+  <links id="pf15945865463944" target="pf15945865463949" source="pf15945682825781" outcome="login" redirect="true"/>
+</pageflow:Pageflow>

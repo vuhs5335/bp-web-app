@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<title>#{dashBoardPage.title}</title>
+    		</ui:define>
+			<ui:define name="content">
+				<h:form>
+					<p:outputPanel id="pagePanel">
+	   						<br/>
+	   						<p:panelGrid styleClass="ui-panelgrid-blank" layout="grid" columns="3">
+	   							<p:column>
+									<h1>#{dashBoardPage.title}</h1>
+								</p:column>
+								<p:column>
+									
+								</p:column>
+								<p:column>
+									
+								</p:column>
+	   						</p:panelGrid>
+	   				</p:outputPanel>
+	   				<p:outputPanel>
+	   					<div class="ui-g ui-fluid dashboard">
+	   						<div class="ui-g-12 ui-md-4">
+				                <div class="card clearfix summary">
+				                    <span class="title">Users</span>
+				                    <span class="detail">Number of visitors</span>
+				                    <span class="count visitors">12</span>
+				                </div>
+				            </div>
+				            <div class="ui-g-12 ui-md-4">
+				                <div class="card clearfix summary">
+				                    <span class="title">Sales</span>
+				                    <span class="detail">Number of purchases</span>
+				                    <span class="count purchases">534</span>
+				                </div>
+				            </div>
+				            <div class="ui-g-12 ui-md-4">
+				                <div class="card clearfix summary">
+				                    <span class="title">Revenue</span>
+				                    <span class="detail">Income for today</span>
+				                    <span class="count revenue">$3,200</span>
+				                </div>
+				            </div>
+						  <div class="row">
+						    <div class="col-md">
+						      <p:lineChart model="#{dashBoardPage.scatterModel}" style="width: 100%; height: 500px;"/>
+						    </div>
+						    <div class="col-md">
+						      <p:lineChart model="#{dashBoardPage.lineModel}" style="width: 100%; height: 500px;"/>
+						    </div>
+						  </div>
+						</div>
+	   				</p:outputPanel>
+   				</h:form>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

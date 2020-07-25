@@ -1,0 +1,19 @@
+<ui:composition 
+      xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:po="http://primefaces.org/omega">
+    <h:form id="addReadingForm">
+	   <div id="addReading" class="container-fluid">
+		  <div class="row">
+		    <div class="col-md-4 col-lg-2">
+		      <p:commandButton styleClass="btn btn-primary btn-block" rendered="#{viewPage.displayAddBtn}"
+		      				   value="Add Reading"
+		      				   action="addreading"/>
+		    </div>
+		  </div>
+		</div>
+    </h:form>
+</ui:composition>

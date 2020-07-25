@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  	
+    <body>
+	    <ui:composition>
+	    	<h:form>  
+			    <p:growl id="messages"/>
+			 	<p:menubar  model="#{menuView.model}">
+			 		<f:facet name="options">
+			            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+			            <p:commandButton  value="Logout" icon="fa fa-sign-out" action="login"/>
+			        </f:facet>
+			 	</p:menubar>
+			</h:form>
+	    </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+#addReading{
+	margin-top:1%;
+	text-align:center;
+}
+.container-reading-metric{
+	margin-top:23px;
+	margin-bottom:23;
+}
+
+.ui-growl-item-container {
+    opacity: 1 !important;
+}
+
+.m-0{
+	margin: 0 !important;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+        	<meta name="theme-color" content="#0376c9" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>BP Web App</title>
+    </h:head>
+
+    <h:body styleClass="login-body">
+    	<h:form>
+        <div id="login-wrapper">
+          	<div align="center">
+          		<p:graphicImage width="150" height="113" name="images/bp-logo.png" library="omega-layout" />
+          	</div>
+            <div id="login-container">
+                <span class="title">BP Web App</span>
+                
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12">
+                        <p:inputText placeholder="Username" value="#{loginPage.userName}" />
+                    </div>
+                    <div class="ui-g-12">
+                        <p:password placeholder="Password" feedback="false" value="#{loginPage.password}"/>
+                    </div>
+                    <div class="ui-g-12 ui-md-6">
+                        <span class="remember-me">Remember Me</span>
+                        <p:selectBooleanCheckbox />
+                    </div>
+                    <div class="ui-g-12 ui-md-6">
+                        <p:link>Forgot Password</p:link>
+                    </div>
+                    <div class="ui-g-12">
+                        <p:commandButton value="Login" icon="fa fa-check" action="#{loginPage.onLoginBtnClick}" />
+                    </div>
+                </div>
+            </div>
+            <div class="login-footer">Blood Pressure Monitor</div>
+        </div>
+        </h:form>
+        
+        <h:outputStylesheet name="css/layout.css" library="omega-layout" />
+    </h:body>
+
+</html>

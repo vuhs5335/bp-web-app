@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  	
+    <body>
+	    <ui:composition>
+	    	<div class="header">
+				<p:panelGrid columns="3" layout="grid" styleClass="ui-panelgrid-blank">
+					<p:column>
+						<h1>#{applicationPage.title}</h1>
+					</p:column>
+					<p:column>
+						<div align="center">
+						 <p:clock pattern="yyyy-dd-MM HH:mm:ss" mode="client" />
+						</div>
+					</p:column>
+					<p:column>
+						<div align="right" style="vertical-align: middle;padding-top:15px;">
+							<p:panelGrid styleClass="ui-panelgrid-blank" 
+										 columns="2" 
+										 layout="grid" 
+										 style="width:30%"
+										 rendered="#{sessionPage.displayLoginUserInfo}">
+								<p:column>
+									<div align="right">
+									 	<i class="fa fa-user"></i>	
+									</div>
+								</p:column>
+								<p:column>
+									<div align="left">
+										<p:outputLabel value="#{sessionPage.sessionUser.userName}"/>
+									</div>
+								</p:column>
+							</p:panelGrid>
+						</div>
+					</p:column>
+				</p:panelGrid>
+			</div>
+	    </ui:composition>
+    </body>
+</html>

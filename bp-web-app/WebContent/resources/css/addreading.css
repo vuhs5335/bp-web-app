@@ -1,0 +1,56 @@
+
+.ui-calendar-inputStyle input {width:100% !important; display: hidden !important;}
+.p-datepicker {
+	width:100% !important;
+}
+.ui-datepicker-group {
+	width:100% !important;
+}
+.p-datepicker-panel .ui-widget-content{
+	width:100% !important;
+}
+.w-100{
+	width:100% !important;
+}
+.tagBtn {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.selectedTag{
+	  background-color: #9ccc65 !important;
+}
+
+.edit-indicator {
+  background-color: #ffcc66;
+  border: none;
+  color: black;
+  padding: 2.5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 16px;
+  width: 100px;
+  font-weight:bold;
+}
+
+.new-indicator {
+  background-color: #33ccff;
+  border: none;
+  color: black;
+  padding: 2.5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 16px;
+  width: 100px;
+  font-weight:bold;
+}

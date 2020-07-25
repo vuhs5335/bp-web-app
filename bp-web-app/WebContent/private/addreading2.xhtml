@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+      <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<title>#{addReadingPage.title} - BP App</title>
+    			<h:outputStylesheet library="css" name="addreading.css"/>
+    		</ui:define>
+    		<ui:define name="content">
+				<h:form id="addReadingFrm">
+					<p:outputPanel id="pagePanel">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-4 col-lg-2 col-sm-12 container-reading-metric">
+									<h1>#{addReadingPage.title}</h1>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4 col-lg-2 col-sm-6 col-6 d-flex container-reading-metric">
+										<h:outputText rendered="#{addReadingPage.editOperation}"  
+												  styleClass="edit-indicator" 
+												  value="Edit Mode"/>
+								</div>
+								<div class="col-md-4 col-lg-2 col-sm-6 col-6 d-flex justify-content-end container-reading-metric">
+									<p:commandButton rendered="#{addReadingPage.editOperation}"
+													 action="#{addReadingPage.onExitEditMode}"
+													 value="New"
+													 update="@form"/>
+								</div>
+							</div>
+						</div>
+	   				</p:outputPanel>
+	   				<p:outputPanel>
+	   					<div class="container-fluid">
+	   						<p:growl global="true" showDetail="true" closable="true">
+	   							<p:autoUpdate/>
+	   						</p:growl>
+	   						
+	   						
+	   					<div class="row">	
+	   					<div class="container-fluid m-0 col-lg-4">	
+	   						
+	   						<div class="row">
+	   							<div class="col-md-4 col-lg-6 col-sm-12 container-reading-metric">
+	   								<h:panelGrid columns="1" style="width:100%;">
+	   								 	<p:outputLabel for="bp-calendar" value="Date:" style="width: 100%"/>
+								        <p:calendar id="bp-calendar"
+								        			onfocus="blur();"  
+								        			pattern="MM/dd/yyyy" 
+								        			value="#{addReadingPage.readingDate}" 
+								        			styleClass="ui-calendar-inputStyle" />
+								    </h:panelGrid>
+	   							</div>
+	   							<div class="col-md-4 col-lg-6 col-sm-12 container-reading-metric">
+	   								<h:panelGrid columns="1" style="width:100%;">
+	   								 	<p:outputLabel for="bp-time" value="Time:" style="width: 100%"/>
+								        <p:calendar id="bp-time" onfocus="blur();" value="#{addReadingPage.readingTime}" pattern="hh:mm a" timeOnly="true" styleClass="ui-calendar-inputStyle" />
+								    </h:panelGrid>
+	   							</div>
+	   						</div>
+	   						<div class="row">
+	   							<div class="col-md-8 col-lg-4 container-reading-metric">
+	   								<hr/>
+	   								<h:panelGrid columns="2" 
+	   											 styleClass="ui-panelgrid-blank" 
+	   											 style="margin-top: 5px;">
+	   									<h:column>
+	   										  <p:outputLabel value="Input Box:" style="margin-right:10px;"/>
+	   									</h:column>
+	   									<h:column>
+		   									<p:toggleSwitch value="#{addReadingPage.textInputMode}">
+								            	<p:ajax listener="#{addReadingPage.inputToggleListener}" update="@form" />
+								        	</p:toggleSwitch>
+	   									</h:column>
+								    </h:panelGrid>
+	   							</div>
+	   						</div>
+	   						<div class="row">
+   								<div class="col-md-4 col-lg-2 container-reading-metric">
+			  						<h:panelGrid columns="1" style="width:100%;">
+			  							<h:column>
+			  								 <p:outputLabel for="sys-slider" id="systolic" value="Sytolic: #{addReadingPage.reading.systolic}" />
+			  							</h:column>
+			  							<h:column rendered="#{not addReadingPage.textInputMode}">
+			  								 <h:inputHidden id="systolicTxt" value="#{addReadingPage.reading.systolic}" />
+								       		 <p:slider id="sys-slider" styleClass="btn btn-primary btn-block" for="systolicTxt" 
+								        		  display="systolic" style="width: 100%" displayTemplate="Systolic: {value}"
+								        		  minValue="0" maxValue="300"/>
+			  							</h:column>
+			  							<h:column rendered="#{addReadingPage.textInputMode}">
+			  								<p:inputText value="#{addReadingPage.reading.systolic}" styleClass="w-100"/>
+			  							</h:column>
+								    </h:panelGrid>
+							    </div>
+							    <div class="col-md-4 col-lg-2 container-reading-metric">
+			  						<h:panelGrid columns="1" style="width:100%">
+			  							<h:column>
+			  								 <p:outputLabel id="diastolic" value="Diastolic:  #{addReadingPage.reading.diastolic}" />
+			  							</h:column>
+			  							<h:column rendered="#{not addReadingPage.textInputMode}">
+			  								<h:inputHidden id="diastolicTxt" value="#{addReadingPage.reading.diastolic}" />
+								        	<p:slider styleClass="btn btn-primary btn-block" for="diastolicTxt" 
+								        		  display="diastolic" style="width: 100%" displayTemplate="Diastolic: {value}"
+								        		  minValue="0" maxValue="300" />
+			  							</h:column>
+			  							<h:column rendered="#{addReadingPage.textInputMode}">
+			  								<p:inputText  value="#{addReadingPage.reading.diastolic}" styleClass="w-100"/>
+			  							</h:column>
+								    </h:panelGrid>
+							    </div>
+	   						</div>
+	   						<div class="row">
+	   							<div class="col-md-4 col-lg-2 container-reading-metric">
+			  						<h:panelGrid columns="1" style="width:100%">
+			  							<h:column>
+			  								<p:outputLabel id="pulse" value="Pulse:  #{addReadingPage.reading.pulse}" />
+			  							</h:column>
+			  							<h:column rendered="#{not addReadingPage.textInputMode}">
+			  								<h:inputHidden id="pulseTxt" value="#{addReadingPage.reading.pulse}" />
+								        	<p:slider styleClass="btn btn-primary btn-block" for="pulseTxt" 
+								        		  display="pulse" style="width: 100%" displayTemplate="Pulse: {value}" 
+								        		  minValue="0" maxValue="300"/>
+			  							</h:column>
+			  							<h:column rendered="#{addReadingPage.textInputMode}">
+			  								<p:inputText  value="#{addReadingPage.reading.pulse}" styleClass="w-100"/>
+			  							</h:column>
+								    </h:panelGrid>
+							    </div>
+							     <div class="col-md-4 col-lg-2 container-reading-metric">
+			  						<h:panelGrid columns="1" style="width:100%">
+			  							<h:column>
+			  								 <p:outputLabel for="weightTxt" id="weight" value="Weight: #{addReadingPage.reading.weight}" />
+			  							</h:column>
+			  							<h:column rendered="#{not addReadingPage.textInputMode}">
+			  								<h:inputHidden id="weightTxt" value="#{addReadingPage.reading.weight}" />
+									        <p:slider id="weight-slider" styleClass="btn btn-primary btn-block" for="weightTxt" 
+									        		  display="weight" style="width: 100%" displayTemplate="Weight: {value}" 
+									        		  minValue="0" maxValue="1000"/>
+			  							</h:column>
+			  							<h:column rendered="#{addReadingPage.textInputMode}">
+			  								<p:inputText  value="#{addReadingPage.reading.weight}" styleClass="w-100"/>
+			  							</h:column>
+								    </h:panelGrid>
+							    </div>
+	   						</div>
+	   						<div class="row">
+	   							<div class="col-md-8 col-lg-4 container-reading-metric">
+	   								<h:panelGrid columns="1" style="width:100%">
+	   									<p:outputLabel for="desc-txt" value="Description:" />
+	   									<p:inputTextarea id="desc-txt" style="width:100%" 
+	   													 value="#{addReadingPage.reading.description}"/>
+	   								</h:panelGrid>
+	   							</div>
+	   						</div>
+	   						<div class="row">
+	   							<div class="col-md-8 col-lg-4 container-reading-metric">
+	   								<hr/>
+	   								<h:panelGrid columns="1" style="width:100%">
+	   									<h:column>
+	   										<p:outputLabel for="alvs" value="Tags:" />
+	   									</h:column>
+	   									<h:column>
+	   										<h:panelGroup id="alvs">
+	   										<c:forEach var="tagList" items="#{addReadingPage.tagsList}">
+   												<c:forEach var="tag" items="#{tagList}">
+   													<p:commandLink action="#{addReadingPage.onTagSelectBtnClick}" >
+   														<p:autoUpdate/>
+   														<f:attribute name="tagVal" value="#{tag}"/>
+   														<p:outputLabel value="##{tag.tagName}" styleClass="btn-primary tagBtn #{tag.selected ? 'selectedTag' : ''}" />
+   													</p:commandLink>
+   												</c:forEach>
+   												<br/>
+			   								</c:forEach> 
+			   								</h:panelGroup>
+	   									</h:column>
+	   								</h:panelGrid>	
+	   								<hr/>
+	   							</div>
+	   						</div>
+	   						<div class="row">
+	   							<div class="col-md-4 col-lg-2 container-reading-metric" >
+							      <p:commandButton styleClass="btn btn-primary btn-block" 
+							      				   value="Save Reading"
+							      				   action="#{addReadingPage.onSaveReadingBtnClick}"
+							      				   update="@form"/>
+							    </div>
+	   						</div>
+	   						
+	   						
+	   						
+	   						
+	   						
+	   						
+	   						
+	   						</div>
+	   						<div class="container-fluid m-0 col-lg-8">	
+	   							hi
+	   						</div>
+	   						
+	   						</div>
+	   						
+	   					</div>
+	   				</p:outputPanel>
+	   			</h:form>
+	   		</ui:define>
+    	</ui:composition>
+      </h:body>
+</html>

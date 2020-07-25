@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<meta charset="UTF-8"/>
+    			<title>TEST</title>
+    			<style>
+    					@charset "UTF-8";
+						.vid{
+							width: 400px;
+							height: 400px;
+							background-color: #000;
+						}
+    			</style>
+    		</ui:define>
+    		<ui:define name="content">
+				<h:form id="consultForm">
+					<p:outputPanel id="pagePanel">
+	   						<br/>
+	   						<p:panelGrid styleClass="ui-panelgrid-blank" layout="grid" columns="3">
+	   							<p:column>
+									<h1>TEST</h1>
+								</p:column>
+								<p:column>
+									
+								</p:column>
+								<p:column>
+									
+								</p:column>
+	   						</p:panelGrid>
+	   				</p:outputPanel>
+	   				<p:outputPanel >
+							  <div id="main-panel" class="row " >
+							    <div class="col">
+							      	<h1>Video from webCam</h1>
+							  		<video class="vid"></video>
+							    </div>
+							    <div class="col">
+							      	  <h1>Video on Canvas</h1>
+							  			<canvas class="vid"></canvas>
+							    </div>
+							    <div class="col">
+							     	<h1> Video from Server</h1>
+							  			<img alt="" class="vid"/>
+							    </div>
+							  </div>
+							 <script>
+							 	(function(){
+							 		
+							 		var video = document.querySelector('video');
+							 		var canvas = document.querySelector('canvas');
+							 		var img = document.querySelector('img');
+							 		
+							 		var context = canvas.getContext('2d');
+							 		
+							 		var url = "ws://localhost:8080/bp-web-app/wsServer";
+							 		
+							 		var socket = new WebSocket(url);
+							 		
+							 		socket.onopen = onOpen;
+							 		
+							 		function onOpen(event){
+							 			
+							 		}
+							 		
+							 		var constraints = {
+							 				video: true,
+							 				audio: false
+							 		};
+							 		
+							 		navigator.mediaDevices.getUserMedia(constraints).then(function(stream){
+							 			
+							 			video.srcObject = stream;
+							 			video.play();
+							 			
+							 		}).catch(function(err){
+							 			
+							 		});
+							 		
+							 		setInterval(main, 100);
+							 		
+							 		function main(){
+							 			drawCanvas();
+							 			readCanvas();
+							 		}
+							 		
+							 		function drawCanvas(){
+							 			context.drawImage(video, 0, 0, canvas.width, canvas.height);
+							 		}
+							 		
+							 		function readCanvas(){
+							 			
+							 			var canvasData = canvas.toDataURL('image/jpeg', 1);
+							 			var decodedAstring = atob(canvasData.split(',')[1]);
+							 			
+							 			var charArray = [];
+							 			
+							 			for (var i = 0; decodedAstring.length > i ; i++) {
+											charArray.push(decodedAstring.charCodeAt[i]);
+										}
+							 			
+							 			socket.send(new Blob([new Uint8Array(charArray)], {
+							 				type: 'image/jpeg'
+							 			}));
+							 			
+							 			socket.addEventListener('message', function(event){
+							 				img.src=window.URL.createObjectURL(event.data);
+							 			})
+							 		}
+							 		
+							 		
+							 	})();
+							 </script>
+	   				</p:outputPanel>
+	   			</h:form>
+	   		</ui:define>
+    	</ui:composition>
+      </h:body>
+</html>

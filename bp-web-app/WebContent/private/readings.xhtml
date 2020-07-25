@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:hersa="http://java.sun.com/jsf/composite/hersa">
+      <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<title>#{readingsPage.title}</title>
+				<!-- style -->    		 	
+    		</ui:define>
+    		<ui:define name="content">
+				<h:form id="readingsForm">
+					<!-- script -->
+					<p:outputPanel id="pagePanel">
+	   						<br/>
+	   						<p:panelGrid styleClass="ui-panelgrid-blank" layout="grid" columns="3">
+	   							<p:column>
+									<h1>#{readingsPage.title}</h1>
+								</p:column>
+								<p:column>
+									
+								</p:column>
+								<p:column>
+									
+								</p:column>
+	   						</p:panelGrid>
+	   				</p:outputPanel>
+	   				<p:outputPanel rendered="#{not sessionPage.mobile}">
+	   				
+   						<p:dataTable id="readingsTable"
+				      				 value="#{readingsPage.readingsList}"
+				      				 var="bpReading"
+				      				 reflow="true">
+				      		<f:facet name="header">
+				      			<h:outputText value="Readings"/>
+				      		</f:facet>		 
+				      		<p:column headerText="ID">
+				      			<h:outputText value="#{bpReading.id}"/>
+				      		</p:column>
+				      		<p:column headerText="Sys">
+				      			<h:outputText value="#{bpReading.systolic}"/>
+				      		</p:column>
+				      		<p:column headerText="Dia">
+				      			<h:outputText value="#{bpReading.diastolic}"/>
+				      		</p:column>
+				      		<p:column headerText="Pulse">
+				      			<h:outputText value="#{bpReading.pulse}"/>
+				      		</p:column>
+				      		<p:column headerText="Tags">
+				      			<h:outputText value="#{bpReading.tags}"/>
+				      		</p:column>
+				      		<p:column headerText="Desc">
+				      			<h:outputText value="#{bpReading.description}"/>
+				      		</p:column>
+				      		<p:column headerText="Date">
+				      			<h:outputText value="#{bpReading.date}"/>
+				      		</p:column>
+				      		<f:facet name="footer">
+				      			<h:outputText value="Readings"/>
+				      		</f:facet>
+				      	</p:dataTable>
+	   				</p:outputPanel>
+
+	   				<hersa:bptable rendered="#{sessionPage.mobile}"/>
+	   				
+	   			</h:form>
+	   		</ui:define>
+    	</ui:composition>
+      </h:body>
+</html>
