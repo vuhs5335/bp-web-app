@@ -8,13 +8,11 @@
 
     <composite:interface>
     	<composite:attribute name="value" />
-    	<!-- <composite:attribute name="registerButtonAction"
-    						 method-signature="java.lang.String action()" /> -->
     </composite:interface>
     
     <composite:implementation>
-    	<h:outputScript library="composite" name="js/bptable.js" target="head" />
-    	<h:outputStylesheet library="composite" name="css/bptable.css" target="head" />
+    	<h:outputScript library="hersa" name="js/bptable.js" target="head" />
+    	<h:outputStylesheet library="hersa" name="css/bptable.css" target="head" />
 		<p:outputPanel rendered="true">
 			<p:growl global="true" showDetail="true" closable="true">
 				<p:autoUpdate/>
@@ -102,16 +100,3 @@
   		</p:outputPanel>	
     </composite:implementation>
 </html>
-
-	<!-- <h:panelGrid columns="2" id="textPanel">
-	
-				#{cc.attrs.nameLable} :
-				<h:inputText id="name" value="#{cc.attrs.nameValue}" />
-	
-				#{cc.attrs.emailLable} :
-				<h:inputText id="email" value="#{cc.attrs.emailValue}" />
-	
-			</h:panelGrid>
-	
-			<p:commandButton action="#{cc.attrs.registerButtonAction}"
-				value="#{cc.attrs.registerButtonText}"/> -->
