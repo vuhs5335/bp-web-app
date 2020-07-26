@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.FacesComponent;
 import javax.faces.event.ActionEvent;
 
 import org.apache.commons.lang.StringUtils;
@@ -73,6 +74,11 @@ public class ReadingsPage extends FacesPage implements Serializable {
 			
 			loadBloodPressureReadings();
 			addInfoMessage("Reading Deleted.");
+			
+			// do external page logic
+			if (isAddReadingsPageInScope()) {
+				getAddReadingPage().onPageLoad();
+			}
 
 		} catch (ApplicationException e) {
 			e.printStackTrace();
@@ -82,21 +88,32 @@ public class ReadingsPage extends FacesPage implements Serializable {
 		return "";
 	}
 	
-	public void editActionListener(ActionEvent event) {
-	    Long id = (Long) event.getComponent().getAttributes().get("editId");
-	    SessionPage sessionPage = getSessionPage();
-	    sessionPage.setEditBpId(id);
-	}
-	
 	public String goToEditPage() {
 		
 		String response = "";
 		
+		Map<String, String> map = getFacesContext().getExternalContext().getRequestParameterMap();
+		
+		String id = map.get("editId");
+	    
+		Long idL = StringUtils.isEmpty(id) ? null : Long.valueOf(id);
+		
 		SessionPage sessionPage = getSessionPage();
+		
+	    sessionPage.setEditBpId(idL);
 	    
 		if (sessionPage.isEditRequest()) {
+			
 			response = "addreading";
+			
+			if(isAddReadingsPageInScope()) {
+				response = "";
+				AddReadingPage page = getAddReadingPage();
+				page.onPageLoad();
+			}
+			
 		}
+		
 		return response;
 	}
 	

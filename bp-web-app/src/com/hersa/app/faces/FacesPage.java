@@ -28,7 +28,7 @@ public class FacesPage {
 
 	public void onPageLoad() {
 		if (isReadingsPageInScope()) {
-			 PrimeFaces.current().executeScript("bindDraggable();");
+			 //PrimeFaces.current().executeScript("bindDraggable();");
 		}
 	}
 	
@@ -50,7 +50,7 @@ public class FacesPage {
 	/*=== check view functions ===*/
 	
 	public boolean isAddReadingsPageInScope() {
-		Object readingPage = getViewMap().get("addReadingPage");
+		Object readingPage = getAddReadingPage();
 		return readingPage != null;
 	}
 	
@@ -63,6 +63,11 @@ public class FacesPage {
 		Object page = getViewMap().get("readingsPage");
 		return page != null;
 	}
+	
+	public AddReadingPage getAddReadingPage() {
+		return (AddReadingPage) getViewMap().get("addReadingPage");
+	}
+	
 	public SessionPage getSessionPage() {
 		SessionPage sessionPage = (SessionPage) sessionUtils.getSessionMap().get("sessionPage");
 		return sessionPage;

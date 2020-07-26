@@ -3,7 +3,7 @@
  			font-weight:bold !important; 
  			text-decoration: none !important;
  		}
- 		 		.dot {
+ 		.dot {
 		  height: 15px;
 		  width: 15px;
 		  border-radius: 50%;
@@ -25,7 +25,7 @@
 			position: absolute;
 			width:100%;
 			height:100%;
-						top: 0;
+			top: 0;
 			margin:0;
 			padding:0;
 			border-radius: 5px !important;
@@ -42,5 +42,12 @@
 			 margin: 0 !important;
 		}
 		.delete-link{
-			display:hidden !important;
+			color: #0388e5;
+			cursor: pointer;
+		}	
+		.edit-link{
+			color: #0388e5;
+			cursor: pointer;
 		}
+		
+		

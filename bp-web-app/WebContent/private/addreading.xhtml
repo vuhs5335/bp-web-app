@@ -14,11 +14,11 @@
     			<h:outputStylesheet library="css" name="addreading.css"/>
     			<style>
 					@media screen and (max-width: 950px) {
-					  .readingsView {
-					    display:none !important;
-					  }
+					  	.readingsView {
+					    	display:none !important;
+					  		}
+						}
 					}
-}
     			</style>
     		</ui:define>
     		<ui:define name="content">
@@ -198,13 +198,13 @@
 									    </div>
 			   						</div>
 		   						</div>
-		   						<!-- ===================
-		   							 Right Side
-		   							 =================== -->
+		   						<!-- =================== -->
+		   						<!-- Right Side			 -->
+		   						<!-- =================== -->
 		   						<div class="container-fluid m-0 col-lg-6">	
 		   							<div class="readingsView">
 		   							<p:outputPanel rendered="#{not sessionPage.mobile}" >
-		   								<hersa:bptable/>
+		   								<hersa:bptable draggable="false"/>
 		   							</p:outputPanel>
 		   							</div>
 		   						</div>

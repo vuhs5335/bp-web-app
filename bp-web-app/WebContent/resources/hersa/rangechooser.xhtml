@@ -1,0 +1,24 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:p="http://primefaces.org/ui">
+    <cc:interface componentType="rangeChooser">
+        <!-- Define component attributes here -->
+        <cc:clientBehavior name="rangeSelected" event="change" targets="hiddenValue"/>
+        <cc:attribute name="from" type="java.util.Calendar"/>
+        <cc:attribute name="to" type="java.util.Calendar"/>
+        <cc:attribute name="text" type="java.lang.String"/>
+
+    </cc:interface>
+
+
+    <cc:implementation>
+
+        <div id="#{cc.clientId}">
+              
+                <p:inputText id="hiddenValue" value="#{cc.attrs.text}"/>
+        </div>
+    </cc:implementation>
+</ui:component>

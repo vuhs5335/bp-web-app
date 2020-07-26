@@ -6,21 +6,26 @@
       xmlns:composite="http://java.sun.com/jsf/composite"
       xmlns:p="http://primefaces.org/ui">
 
-    <composite:interface>
+    <composite:interface >
     	<composite:attribute name="value" />
+    	<composite:attribute name="draggable" type="java.lang.Boolean" default="true" />
     </composite:interface>
     
     <composite:implementation>
-    	<h:outputScript library="hersa" name="js/bptable.js" target="head" />
     	<h:outputStylesheet library="hersa" name="css/bptable.css" target="head" />
 		<p:outputPanel rendered="true">
 			<p:growl global="true" showDetail="true" closable="true">
 				<p:autoUpdate/>
 			</p:growl>
-			<p:remoteCommand  name="deleteRC" 
+			<p:remoteCommand name="deleteRC" 
  				  update="@form" 
  				  oncomplete="bindDraggable()" 
  				  action="#{readingsPage.onDeleteBtnClick}" >
+			</p:remoteCommand>
+			<p:remoteCommand name="editRC" 
+ 				  update="@form" 
+ 				  oncomplete="bindDraggable()" 
+ 				  action="#{readingsPage.goToEditPage}">
 			</p:remoteCommand>
  			<h:dataTable id="readingsTableMobile"
 	      				 value="#{readingsPage.readingsList}"
@@ -36,17 +41,16 @@
 									</td>
 									<td style="padding-right:10%;" align="right">
 										<i class="fa fa fa-eye fa-2x" style="color: #fff;" aria-hidden="true"></i>
-
 									</td>
 								</tr>
 							</table>
 						</div>
 						<div class="card bp-link draggable" editId="#{bpReading.id}">
 							<p:commandLink class="edit-link" 
-										   action="#{readingsPage.goToEditPage}" 
-										   actionListener="#{readingsPage.editActionListener}">
+										   rendered="#{cc.attrs.draggable}"
+										   action="#{readingsPage.goToEditPage}">
 								<p:ajax/>
-								<f:attribute name="editId" value="#{bpReading.id}"/>
+								<f:param name="editId" value="#{bpReading.id}"/>
 							</p:commandLink>
 							<div class="row">
 	   							<div class="col-10" >
@@ -74,7 +78,7 @@
 	   								 	<p:outputLabel value="#{bpReading.pulse}"/>
 	   						 		</div>
 	   						 	</div>
-	   						 	<div class="col-7 " >
+	   						 	<div class="col-7" >
 	   						 		<section>
    						 				<div class="col nopadding">
 		   						 			Tags:
@@ -92,11 +96,23 @@
 		   						 		</div>
 	   						 		</section>
 	   						 	</div>
+	   						 	<p:outputPanel rendered="#{not cc.attrs.draggable}" styleClass="col-2" style="border-left:1px dashed silver;">
+	   						 		<p:panelGrid columns="1" style="height:100%;" styleClass="ui-panelgrid-blank">
+	   						 			<p:column>
+	   						 				<i class="fa fa fa-pencil-square-o fa-2x edit-link" aria-hidden="true" editId="#{bpReading.id}"></i>
+	   						 			</p:column>
+	   						 			<p:column>
+	   						 				<i class="fa fa-trash fa-2x delete-link" aria-hidden="true" editId="#{bpReading.id}"></i>
+	   						 			</p:column>
+	   						 		</p:panelGrid>
+	   						 	</p:outputPanel>
 	   						 </div>
 						</div>
 					</section>
 	      		</h:column>
 	      	</h:dataTable>
   		</p:outputPanel>	
+  		<h:outputScript rendered="#{cc.attrs.draggable}" library="hersa" name="js/bptable-draggable.js" target="head" />
+  		<h:outputScript rendered="#{not cc.attrs.draggable}" library="hersa" name="js/bptable-non-draggable.js" target="head" />
     </composite:implementation>
 </html>
