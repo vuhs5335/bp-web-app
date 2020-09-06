@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.hersa.app.faces.ApplicationPage;
 import com.hersa.app.faces.SessionPage;
 
 /**
@@ -57,7 +58,7 @@ public class ApplicationFilter implements Filter {
 			if (validSession) {
 				sessionPage.setMobile(isMobile);
 			}
-	
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

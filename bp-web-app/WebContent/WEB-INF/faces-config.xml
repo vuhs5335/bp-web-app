@@ -41,5 +41,10 @@
 	       <to-view-id>/private/admin/apitool.xhtml</to-view-id>
 	       <redirect/>
 	    </navigation-case>
+	    <navigation-case>
+	       <from-outcome>adminconsole</from-outcome>
+	       <to-view-id>/private/admin/adminconsole.xhtml</to-view-id>
+	       <redirect/>
+	    </navigation-case>
 	</navigation-rule>
 </faces-config>

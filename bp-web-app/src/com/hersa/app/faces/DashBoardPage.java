@@ -38,6 +38,7 @@ public class DashBoardPage extends FacesPage implements Serializable {
 	
 	@PostConstruct
 	public void onPageLoad() {
+		super.onPageLoad();
 		createLineModel();
 		createScatterModel();
 	}

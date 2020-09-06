@@ -50,7 +50,7 @@ public class AbstractBaseManager {
 	}
 	
 	public ConnectionProvider getDefautlConnectionProvider() {
-		ConnectionProvider factory = new DefaultConnectionProvider(JNDI.EBILLING);
+		ConnectionProvider factory = new DefaultConnectionProvider(JNDI.BPMONITOR);
 		return factory;
 	}
 	

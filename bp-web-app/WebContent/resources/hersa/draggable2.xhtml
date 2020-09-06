@@ -1,0 +1,47 @@
+<ui:component
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:cc="http://java.sun.com/jsf/composite">
+    
+    <cc:interface componentType="draggable2">
+      <cc:attribute name="value" />
+      <cc:attribute name="draggable" type="java.lang.Boolean" default="true" /> 
+      <cc:attribute name="value" type="java.util.Date"
+            shortDescription="The selected Date. Defaults to today." />
+      <cc:attribute name="maxyear" type="java.lang.Integer"
+           shortDescription="The maximum year. Defaults to current year." />
+      <cc:attribute name="minyear" type="java.lang.Integer"
+           shortDescription="The minimum year. Defaults to maxyear minus 100." />
+    </cc:interface>
+    <cc:implementation>
+    	<h:outputStylesheet library="hersa" name="css/bptable2.css" target="head" />
+        
+        <section  id="#{cc.clientId}" class="card-section">
+			<div class="card-container rounded">
+				<table style="width:100%; height:100%;" >
+					<tr>
+						<td style="padding-left:10%;">
+							<i class="fa fa-trash fa-2x" style="color: #fff;" aria-hidden="true"></i>
+						</td>
+						<td style="padding-right:10%;" align="right">
+							<i class="fa fa fa-eye fa-2x" style="color: #fff;" aria-hidden="true"></i>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="card bp-link draggable" editId="#{bpReading.id}">
+				<div class="row">
+					<cc:insertChildren/>
+ 				</div>
+			</div>
+		</section>
+		
+		
+		
+		<h:outputScript rendered="#{cc.attrs.draggable}" library="hersa" name="js/bptable-draggable.js" target="head" />
+  		<h:outputScript rendered="#{not cc.attrs.draggable}" library="hersa" name="js/bptable-non-draggable.js" target="head" />
+    </cc:implementation>
+    
+</ui:component>

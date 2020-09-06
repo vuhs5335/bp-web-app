@@ -204,7 +204,9 @@
 		   						<div class="container-fluid m-0 col-lg-6">	
 		   							<div class="readingsView">
 		   							<p:outputPanel rendered="#{not sessionPage.mobile}" >
-		   								<hersa:bptable draggable="false"/>
+		   								<hersa:bptable draggable="false" value="#{addReadingPage.readingsList}">
+		   									
+		   								</hersa:bptable>
 		   							</p:outputPanel>
 		   							</div>
 		   						</div>

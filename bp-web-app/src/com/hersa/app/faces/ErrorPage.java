@@ -30,12 +30,14 @@ public class ErrorPage extends FacesPage implements Serializable{
 	
 	@PostConstruct
 	public void onPageLoad() {
+		super.onPageLoad();
 		SecurityRequest request  = (SecurityRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		
+
 		this.message   = request.getMessage();
 		this.errorCode = request.getResponseCode();
 		this.callback  = request.getCallback();
 		this.setUser(getSessionUser());
+		
 	}
 
 	public String goBack() {

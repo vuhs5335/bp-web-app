@@ -32,10 +32,9 @@ function bindDraggable(){
       			
       			var bpId = $(this).attr("editId");
       			
-      			
-      			
       			if (pos == -140) {
-      				$(this).children('.edit-link').first().click();
+      				//$(this).children('.edit-link').first().click();
+      				editRC([{name:'editId', value:bpId}]);
       			}else if(pos == 150){
       			
       				var proceed = confirm("Delete?");

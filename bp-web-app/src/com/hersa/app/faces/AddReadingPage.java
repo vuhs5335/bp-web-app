@@ -13,7 +13,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
-import javax.faces.event.ActionEvent;
 
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.LocalDate;
@@ -43,6 +42,8 @@ public class AddReadingPage extends FacesPage implements Serializable {
 	private Long editId;
 	private boolean isTextInputMode;
 	
+	private List<BloodPressure> readingsList;
+	
 	public AddReadingPage() {
 		super("Add Reading");
 	}
@@ -70,6 +71,13 @@ public class AddReadingPage extends FacesPage implements Serializable {
 		
 		// check session for settings. 
 		isTextInputMode = getSessionPage().isInputTextPreferred();
+		
+		loadBloodPressureReadings();
+	}
+	
+	private void loadBloodPressureReadings() {
+		BloodPressureManager bpm = new BloodPressureManager();
+		setReadingsList(bpm.retrieveAllBloodPressure());
 	}
 	
 	private BloodPressure loadForEdit(Long editId2) {
@@ -337,5 +345,13 @@ public class AddReadingPage extends FacesPage implements Serializable {
 
 	public void setTextInputMode(boolean isTextInputMode) {
 		this.isTextInputMode = isTextInputMode;
+	}
+
+	public List<BloodPressure> getReadingsList() {
+		return readingsList;
+	}
+
+	public void setReadingsList(List<BloodPressure> readingsList) {
+		this.readingsList = readingsList;
 	}
 }

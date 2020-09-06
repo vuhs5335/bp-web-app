@@ -46,6 +46,14 @@ public class MenuView {
         
         firstSubmenu.getElements().add(item);
         
+        item = DefaultMenuItem.builder()
+                .value("Admin Console")
+                .outcome("adminconsole")
+                .icon("fa fa-paper-plane")
+                .build();
+        
+        firstSubmenu.getElements().add(item);
+        
         model.getElements().add(firstSubmenu);
         
         item = DefaultMenuItem.builder().value("Logout").icon("fa fa-sign-out").outcome("login").build();

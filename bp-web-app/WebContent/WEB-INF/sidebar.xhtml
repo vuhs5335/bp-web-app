@@ -20,7 +20,7 @@
                 								   margin-left:3%;" />
                 		</p:column>
                 		<p:column>
-                			<span style="color:#ffffff;font-weight:bold;font-size:15px;">BP Web App</span>
+                			<span style="color:#ffffff;font-weight:bold;font-size:15px;">#{applicationPage.title}</span>
                 		</p:column>
                 	</p:panelGrid>
                     <!-- <p:graphicImage name="images/logo.png" library="omega-layout" width="113"/> -->
@@ -34,7 +34,7 @@
                     </a>
                     <ul>
                         <li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Account</span></a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-bell"></i><span>Notifications</span><span class="menu-badge">2</span></a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-bell"></i><span>Notifications</span><span class="menu-badge">#{applicationPage.appMessageCount}</span></a></li>
                         <li><a href="#"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a></li>
                     </ul>
                 </div>

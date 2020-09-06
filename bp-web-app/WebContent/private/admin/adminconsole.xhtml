@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<title>#{apiConsolePage.title}</title>
+    		</ui:define>
+			<ui:define name="content">
+				<h:form>
+	   				<p:outputPanel id="pagePanel">
+	   						<br/>
+	   						<p:messages>
+	   							<p:autoUpdate/>
+	   						</p:messages>
+	   						<p:panelGrid styleClass="ui-panelgrid-blank" layout="grid" columns="3">
+	   							<p:column>
+									<h1>#{apiConsolePage.title}</h1>
+								</p:column>
+								<p:column>
+									
+								</p:column>
+								<p:column>
+									
+								</p:column>
+	   						</p:panelGrid>
+	   				</p:outputPanel>
+	   				<p:outputPanel id="contentPanel">
+	   					<p:panelGrid columns="1">
+	   						<p:column>
+	   							<p:inputText value="#{adminConsolePage.appMessageTitle}"/>
+	   						</p:column>
+	   						<p:column>
+	   							<p:inputText value="#{adminConsolePage.appMessage}"/>
+	   						</p:column>
+	   						<p:column>
+	   							<p:commandButton value="Add Message" action="#{adminConsolePage.onAddAppMessageBtnClick}" update="@form"/>
+	   						</p:column>
+	   					</p:panelGrid>
+	   				</p:outputPanel>
+   				</h:form>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

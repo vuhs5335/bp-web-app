@@ -6,8 +6,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.primefaces.PrimeFaces;
-
 import com.hersa.app.bom.user.User;
 import com.hersa.app.utils.SessionUtils;
 
@@ -25,13 +23,20 @@ public class FacesPage {
 	public FacesPage() {
 		initialize();
 	}
-
+	
 	public void onPageLoad() {
-		if (isReadingsPageInScope()) {
-			 //PrimeFaces.current().executeScript("bindDraggable();");
-		}
+		//renderAppMessages();
 	}
 	
+	private void renderAppMessages() {
+		try {
+			ApplicationPage app = getApplicationPage();
+			app.displayMessages();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private void initialize() {
 		this.setTitle("");
 		this.pageHeader  = "";
@@ -71,6 +76,11 @@ public class FacesPage {
 	public SessionPage getSessionPage() {
 		SessionPage sessionPage = (SessionPage) sessionUtils.getSessionMap().get("sessionPage");
 		return sessionPage;
+	}
+	
+	public ApplicationPage getApplicationPage() {
+		ApplicationPage page = (ApplicationPage) getFacesContext().getExternalContext().getApplicationMap().get("applicationPage");
+		return page;
 	}
 	
 	public Map<String, Object> getViewMap() {

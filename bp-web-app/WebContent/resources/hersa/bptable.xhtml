@@ -5,10 +5,15 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:composite="http://java.sun.com/jsf/composite"
       xmlns:p="http://primefaces.org/ui">
-
+	
+	<!-- ================================================================== -->
+	<!-- draggable : When set to false, disables js draggable function and  --> 
+	<!--			 displays static controls.  							--> 
+    <!-- ================================================================== -->
+    
     <composite:interface >
     	<composite:attribute name="value" />
-    	<composite:attribute name="draggable" type="java.lang.Boolean" default="true" />
+    	<composite:attribute name="draggable" type="java.lang.Boolean" default="true" /> 
     </composite:interface>
     
     <composite:implementation>
@@ -28,7 +33,7 @@
  				  action="#{readingsPage.goToEditPage}">
 			</p:remoteCommand>
  			<h:dataTable id="readingsTableMobile"
-	      				 value="#{readingsPage.readingsList}"
+	      				 value="#{cc.attrs.value}"
 	      				 var="bpReading"
 	      				 style="width: 100%;">
 	      		<h:column styleClass="card-col">
@@ -46,12 +51,6 @@
 							</table>
 						</div>
 						<div class="card bp-link draggable" editId="#{bpReading.id}">
-							<p:commandLink class="edit-link" 
-										   rendered="#{cc.attrs.draggable}"
-										   action="#{readingsPage.goToEditPage}">
-								<p:ajax/>
-								<f:param name="editId" value="#{bpReading.id}"/>
-							</p:commandLink>
 							<div class="row">
 	   							<div class="col-10" >
 	   								<i class="fa fa-calendar" aria-hidden="true" style="margin-right:10px;color:#3399ff;"></i>

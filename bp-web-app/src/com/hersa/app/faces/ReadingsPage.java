@@ -8,8 +8,6 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.FacesComponent;
-import javax.faces.event.ActionEvent;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -39,6 +37,7 @@ public class ReadingsPage extends FacesPage implements Serializable {
 	
 	@PostConstruct
 	public void onPageLoad() {
+		super.onPageLoad();
 		// get session user
 		loadBloodPressureReadings();
 	}
