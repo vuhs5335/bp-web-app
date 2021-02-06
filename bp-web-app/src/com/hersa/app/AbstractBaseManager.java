@@ -8,6 +8,8 @@ import com.hersa.app.dao.apirequest.ApiRequestDAO;
 import com.hersa.app.dao.apirequest.ApiRequestDAOFactory;
 import com.hersa.app.dao.bpreading.BpReadingDAO;
 import com.hersa.app.dao.bpreading.BpReadingDAOFactory;
+import com.hersa.app.dao.filestore.FileStoreDAO;
+import com.hersa.app.dao.filestore.FileStoreDAOFactory;
 
 
 
@@ -76,4 +78,14 @@ public class AbstractBaseManager {
 		return dao;
 	}
 
+	public FileStoreDAO getFileStoreDAO() {
+		FileStoreDAO dao = FileStoreDAOFactory.getDAO();
+		dao.setConnectionProvider(this.getDefautlConnectionProvider());
+		return dao;
+	}
+	
+	public FileStoreDAO getFileStoreDAO(Connection connection) {
+		FileStoreDAO dao = FileStoreDAOFactory.getDAO(connection);
+		return dao;
+	}
 }

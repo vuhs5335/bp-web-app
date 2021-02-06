@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:hersa="http://java.sun.com/jsf/composite/hersa">
+      <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<title>#{readingsPage.title}</title>
+				<!-- style -->    		 	
+    		</ui:define>
+    		<ui:define name="content">
+				<h:form id="readingsForm">
+					<!-- script -->
+					<p:outputPanel id="pagePanel">
+	   						<br/>
+	   						<p:panelGrid styleClass="ui-panelgrid-blank" layout="grid" columns="3">
+	   							<p:column>
+									<h1>#{trainingResourcesPage.title}</h1>
+								</p:column>
+								<p:column>
+									
+								</p:column>
+								<p:column>
+									
+								</p:column>
+	   						</p:panelGrid>
+	   				</p:outputPanel>
+	   				<p:outputPanel >
+	   				
+   						<p:dataTable id="filesTable"
+				      				 value="#{trainingResourcesPage.files}"
+				      				 var="file"
+				      				 reflow="true">
+				      		<f:facet name="header">
+				      			<h:outputText value="Training Resources"/>
+				      		</f:facet>		 
+				      		<p:column headerText="Title">
+				      			<h:outputText value="#{file.displayName}"></h:outputText>
+				      		</p:column>
+				      		<p:column headerText="Description">
+				      			<h:outputText value="#{file.description}"></h:outputText>
+				      		</p:column>
+				      		<p:column headerText="Resource">
+				      			<center>
+				      			<p:outputPanel rendered="#{file.type eq 'VIDEO'}">
+			      					 <video width="320" height="240" controls="true">
+										  <source src="../resource?id=#{file.id}" type="video/mp4"/>
+									</video> 
+								</p:outputPanel>
+								<p:outputPanel rendered="#{file.type eq 'TEXT'}">
+									<p:link href="../resource?id=#{file.id}" value="#{file.fileName}"></p:link>
+								</p:outputPanel>
+								</center>
+				      		</p:column>
+				      	</p:dataTable>
+	   				</p:outputPanel>
+	   			</h:form>
+	   		</ui:define>
+    	</ui:composition>
+      </h:body>
+</html>

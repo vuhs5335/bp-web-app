@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:hersa="http://java.sun.com/jsf/composite/hersa">
+      <h:body>
+    	<ui:composition template="/WEB-INF/template.xhtml">
+    		<ui:define name="head">
+    			<title>#{readingsPage.title}</title>
+				<!-- style -->    		 	
+    		</ui:define>
+    		<ui:define name="content">
+				<h:form id="readingsForm">
+					<!-- script -->
+					<p:outputPanel id="pagePanel">
+	   						<br/>
+	   						<p:panelGrid styleClass="ui-panelgrid-blank" layout="grid" columns="3">
+	   							<p:column>
+									<h1>#{fileStoreAdminPage.title}</h1>
+								</p:column>
+								<p:column>
+									
+								</p:column>
+								<p:column>
+									
+								</p:column>
+	   						</p:panelGrid>
+	   				</p:outputPanel>
+	   				
+	   			</h:form>
+	   			
+	   			 <h:form enctype="multipart/form-data">
+	   			 	<p:outputPanel id="pagePanel">
+	   			 	<div class="container-fluid">
+   						<p:growl global="true" showDetail="true" closable="true">
+   							<p:autoUpdate/>
+   						</p:growl>
+	   					<div class="row">
+	   						<div class="ui-g ui-fluid">
+			                    <div class="ui-g-12">
+			                        <p:inputText placeholder="File Name" value="#{fileStoreAdminPage.displayName}" />
+			                    </div>
+			                    <div class="ui-g-12">
+			                        <p:inputText placeholder="Category" value="#{fileStoreAdminPage.category}" />
+			                    </div>
+			                     <div class="ui-g-12">
+			                        <p:inputText placeholder="Description" value="#{fileStoreAdminPage.description}" />
+			                    </div>
+			                     <div class="ui-g-12">
+			                        <p:inputText placeholder="Caption" value="#{fileStoreAdminPage.caption}" />
+			                    </div>
+			                    <div class="ui-g-12">
+			                    	<p:fileUpload value="#{fileStoreAdminPage.file}" mode="simple" skinSimple="true"/>
+			                    </div>
+			                    <div class="ui-g-12">
+			                    	<p:commandButton value="Submit" ajax="false" action="#{fileStoreAdminPage.upload}" styleClass="p-mt-3 ui-button-outlined p-d-block"/>
+			                    </div>
+			                </div>
+				        	
+	   					</div>
+	   				</div>
+			    	</p:outputPanel>
+			    </h:form>
+	   		</ui:define>
+    	</ui:composition>
+      </h:body>
+</html>

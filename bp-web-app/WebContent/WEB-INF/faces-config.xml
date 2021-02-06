@@ -46,5 +46,15 @@
 	       <to-view-id>/private/admin/adminconsole.xhtml</to-view-id>
 	       <redirect/>
 	    </navigation-case>
+	     <navigation-case>
+	       <from-outcome>filestoremanager</from-outcome>
+	       <to-view-id>/private/admin/filestoremanager.xhtml</to-view-id>
+	       <redirect/>
+	    </navigation-case>
+	    <navigation-case>
+	       <from-outcome>training</from-outcome>
+	       <to-view-id>/private/training.xhtml</to-view-id>
+	       <redirect/>
+	    </navigation-case>
 	</navigation-rule>
 </faces-config>

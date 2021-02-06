@@ -56,6 +56,43 @@ public class MenuView {
         
         model.getElements().add(firstSubmenu);
         
+        firstSubmenu = DefaultSubMenu.builder()
+                .label("Resources").icon("fa fa-cog")
+                .build();
+ 
+        item = DefaultMenuItem.builder()
+                .value("File Store Manager")
+                .outcome("filestoremanager")
+                .icon("fa fa-paper-plane")
+                .build();
+        
+        firstSubmenu.getElements().add(item);
+        
+        item = DefaultMenuItem.builder()
+                .value("Training")
+                .outcome("training")
+                .icon("fa fa-paper-plane")
+                .build();
+        
+        firstSubmenu.getElements().add(item);
+        
+        
+        model.getElements().add(firstSubmenu);
+        
+        
+		/*
+		 * item =
+		 * DefaultMenuItem.builder().value("Video Manager").icon("fa fa-sign-out").
+		 * outcome("filestoremanager").build();
+		 * 
+		 * model.getElements().add(item);
+		 */
+        
+        
+        
+        
+        
+        
         item = DefaultMenuItem.builder().value("Logout").icon("fa fa-sign-out").outcome("login").build();
         
         model.getElements().add(item);
